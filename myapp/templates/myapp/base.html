@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Django CRUD{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #fff; color: #000; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        th { background: #eee; }
+        a { text-decoration: none; color: #000; }
+        a:hover { text-decoration: underline; }
+        button { padding: 5px 10px; margin-top: 5px; }
+        form { max-width: 500px; }
+        input, select, textarea { width: 100%; margin-bottom: 10px; padding: 5px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'student_list' %}">Students</a> |
+        <a href="{% url 'course_list' %}">Courses</a> |
+        <a href="{% url 'department_list' %}">Departments</a> |
+        <a href="{% url 'schedule_list' %}">Schedules</a> |
+        <a href="{% url 'tuition_list' %}">Tuitions</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
+

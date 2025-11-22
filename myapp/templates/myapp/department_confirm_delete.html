@@ -1,0 +1,11 @@
+{% extends "myapp/base.html" %}
+{% block title %}Delete Department{% endblock %}
+{% block content %}
+<h1>Delete Department</h1>
+<p>Are you sure you want to delete "{{ object.department_name }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+</form>
+<a href="{% url 'department_list' %}">Cancel</a>
+{% endblock %}

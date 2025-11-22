@@ -1,0 +1,11 @@
+{% extends "myapp/base.html" %}
+{% block title %}Schedule Form{% endblock %}
+{% block content %}
+<h1>Schedule Form</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'schedule_list' %}">Back to list</a>
+{% endblock %}

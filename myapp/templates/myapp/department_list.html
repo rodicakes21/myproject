@@ -1,0 +1,29 @@
+{% extends "myapp/base.html" %}
+{% block title %}Departments{% endblock %}
+{% block content %}
+<h1>Departments</h1>
+<a href="{% url 'department_create' %}">Add New Department</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Head</th>
+        <th>Office</th>
+        <th>Contact</th>
+        <th>Actions</th>
+    </tr>
+    {% for dept in items %}
+    <tr>
+        <td>{{ dept.department_id }}</td>
+        <td>{{ dept.department_name }}</td>
+        <td>{{ dept.head_of_dept }}</td>
+        <td>{{ dept.office_loc }}</td>
+        <td>{{ dept.contact }}</td>
+        <td>
+            <a href="{% url 'department_update' dept.id %}">Edit</a> |
+            <a href="{% url 'department_delete' dept.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

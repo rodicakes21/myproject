@@ -1,0 +1,29 @@
+{% extends "myapp/base.html" %}
+{% block title %}Schedules{% endblock %}
+{% block content %}
+<h1>Schedules</h1>
+<a href="{% url 'schedule_create' %}">Add New Schedule</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Course</th>
+        <th>Instructor</th>
+        <th>Day</th>
+        <th>Time Slot</th>
+        <th>Actions</th>
+    </tr>
+    {% for sched in items %}
+    <tr>
+        <td>{{ sched.schedule_id }}</td>
+        <td>{{ sched.course.course_name }}</td>
+        <td>{{ sched.instructor }}</td>
+        <td>{{ sched.day_of_week }}</td>
+        <td>{{ sched.time_slot }}</td>
+        <td>
+            <a href="{% url 'schedule_update' sched.id %}">Edit</a> |
+            <a href="{% url 'schedule_delete' sched.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

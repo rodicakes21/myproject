@@ -1,0 +1,29 @@
+{% extends "myapp/base.html" %}
+{% block title %}Courses{% endblock %}
+{% block content %}
+<h1>Courses</h1>
+<a href="{% url 'course_create' %}">Add New Course</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Units</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    {% for course in items %}
+    <tr>
+        <td>{{ course.course_id }}</td>
+        <td>{{ course.course_name }}</td>
+        <td>{{ course.course_code }}</td>
+        <td>{{ course.units }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+            <a href="{% url 'course_update' course.id %}">Edit</a> |
+            <a href="{% url 'course_delete' course.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

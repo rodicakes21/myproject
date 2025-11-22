@@ -1,0 +1,29 @@
+{% extends "myapp/base.html" %}
+{% block title %}Tuitions{% endblock %}
+{% block content %}
+<h1>Tuitions</h1>
+<a href="{% url 'tuition_create' %}">Add New Tuition</a>
+<table>
+    <tr>
+        <th>Payment ID</th>
+        <th>Course</th>
+        <th>Amount</th>
+        <th>Semester</th>
+        <th>Due Date</th>
+        <th>Actions</th>
+    </tr>
+    {% for t in items %}
+    <tr>
+        <td>{{ t.payment_id }}</td>
+        <td>{{ t.course.course_name }}</td>
+        <td>{{ t.amount }}</td>
+        <td>{{ t.semester }}</td>
+        <td>{{ t.due_date }}</td>
+        <td>
+            <a href="{% url 'tuition_update' t.id %}">Edit</a> |
+            <a href="{% url 'tuition_delete' t.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
